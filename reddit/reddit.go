@@ -7,6 +7,9 @@ import (
         "fmt"
 	"errors"
 	"log"
+	"bufio"
+	"os"
+	"strings"
 )
 
 type Item struct {
@@ -39,10 +42,13 @@ func (i Item) String() string {
         return fmt.Sprintf("%s\n%s\t%d votes\tr/%s\n%s\n", i.Title, com, i.Score, i.Subreddit, i.URL)
 }
 
-func AcceptInput() {
-
-
-}
+func AcceptInput() string {
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("What subreddit would you like to check?: ")
+	sub, _ := reader.ReadString('\n')
+	sub = strings.TrimSuffix(sub, "\n")
+	return sub
+}	
 
 func PrintResponse(items []Item, err error) {
 	if err != nil {

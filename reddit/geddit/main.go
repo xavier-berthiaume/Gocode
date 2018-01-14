@@ -2,8 +2,10 @@ package main
 
 import (
 	"github.com/xavier-berthiaume/reddit"
+	"fmt"
 )
 
 func main() {
-	reddit.PrintResponse(reddit.Get("bartenders"))
+	subreddit := reddit.AcceptInput()
+	reddit.PrintResponse(reddit.Get(subreddit))
 }
